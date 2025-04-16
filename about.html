@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us Redesign</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+ 
+</head>
+<body>
+  <div class="navbar">
+    <img src="" alt="Logo" />
+    <div class="nav-links">
+      <a href="file:///C:/Users/cruzi/Desktop/ues/Proyectou/index.html">Home</a>
+      <a href="#">Becas</a>
+      <a href="#">Universidades</a>
+      <a href="#">Sobre nosotros</a>
+    </div>
+  </div>
+
+  <header>
+    <h1>About us</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis.</p>
+  </header>
+
+  <!-- Sección de Legal Briefs con imagen al lado derecho -->
+  <div class="section" style="display: flex; gap: 2rem; flex-wrap: wrap; align-items: center;">
+    <div class="container" style="flex: 1; min-width: 300px;">
+      <div class="left-content">
+        <h2>Lorem ipsum dolor sit amet, consectetur</h2>
+        <p>Nacimos del sueño de un grupo de estudiantes y profesionales salvadoreños que conocieron las becas por casualidad… y nunca miraron atrás. Vimos cómo una sola oportunidad podía cambiar una vida entera, y decidimos convertir ese hallazgo en una plataforma accesible para todos.</p>
+        <div class="tabs">
+          <button class="tab-button active" onclick="showTab('mission')">Misión</button>
+          <button class="tab-button" onclick="showTab('vision')">Visión</button>
+          <button class="tab-button" onclick="showTab('value')">Nuestros valores</button>
+        </div>
+        <div id="mission" class="tab-content active">
+          <p>Empoderar a la juventud salvadoreña brindando acceso a oportunidades educativas de calidad a través de becas nacionales e internacionales. Nuestra misión es romper barreras económicas y territoriales, apostando por la educación como el motor del desarrollo personal y colectivo.</p>
+        </div>
+        <div id="vision" class="tab-content">
+          <p>Ser la plataforma líder de becas en El Salvador, reconocida por conectar talento con oportunidades, transformando vidas y comunidades a través de la educación superior y la excelencia académica.</p>
+        </div>
+        <div id="value" class="tab-content">
+          <p>Equidad, Compromiso Social, Excelencia, Inclusión</p>
+        </div>
+      </div>
+    </div>
+    <div style="flex: 1; display: flex; justify-content: center; min-width: 300px;">
+      <img src="imagenes/Alejandro_Gutman.jpg" alt="Imagen relacionada" style="max-width: 100%; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.15);" />
+    </div>
+  </div>
+
+  <div class="section video-flex" style="flex: 1; display: flex; justify-content: center; min-width: 300px;">
+    <div class="video-rectangle">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Empower Video" allowfullscreen></iframe>
+    </div>
+    <div style="max-width: 400px;">
+      <h2>Lorem ipsum dolor sit amet, consectetur</h2>
+      <p>Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+      <div class="quote">
+        “Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.”
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    function showTab(tabId) {
+      const buttons = document.querySelectorAll('.tab-button');
+      const contents = document.querySelectorAll('.tab-content');
+      buttons.forEach(btn => btn.classList.remove('active'));
+      contents.forEach(content => content.classList.remove('active'));
+      document.querySelector(`.tab-button[onclick="showTab('${tabId}')"]`).classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+      link.addEventListener('mouseover', () => link.style.transform = 'scale(1.1)');
+      link.addEventListener('mouseout', () => link.style.transform = 'scale(1)');
+    });
+  </script>
+    <section class="team-section">
+        <h2>Meet our team</h2>
+        <p>These people work on making our product best.</p>
+    
+        <div class="team-cards">
+    
+          <!-- Card 1 -->
+          <div class="card">
+            <img src="https://i.imgur.com/tJ1KZ5n.jpg" alt="Nikita Xing">
+            <div class="card-content">
+              <div class="card-name">Alguien</div>
+              <div class="card-role">Manager</div>
+            </div>
+            <div class="card-footer">
+              <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="X">
+              <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram">
+            </div>
+          </div>
+    
+          <!-- Card 2 Highlight -->
+          <div class="card highlight">
+            <img src="https://i.imgur.com/FdWR45N.jpg" alt="Harsh Patel">
+            <div class="card-content">
+              <div class="card-name">Nayi bukele</div>
+              <div class="card-role">Presi</div>
+            </div>
+            <div class="card-footer">
+              <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="X">
+              <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram">
+            </div>
+          </div>
+    
+          <!-- Card 3 -->
+          <div class="card">
+            <img src="https://i.imgur.com/5rRvz8Z.jpg" alt="Sasha Grey">
+            <div class="card-content">
+              <div class="card-name">Nayi bukele</div>
+              <div class="card-role">Si</div>
+            </div>
+            <div class="card-footer">
+              <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="X">
+              <img src="https://cdn-icons-png.flaticon.com/512/1384/1384063.png" alt="Instagram">
+            </div>
+          </div>
+    
+        </div>
+      </section>
+   <!-- FOOTER -->
+
+      <footer style="background-color: #004b5f; color: white; padding-top: 60px; position: relative;">
+        <!-- Wave effect -->
+        <div style="position: absolute; top: -60px; left: 0; width: 100%; overflow: hidden; line-height: 0;">
+          <svg viewBox="0 0 500 60" preserveAspectRatio="none" style="height: 60px; width: 100%;">
+            <path d="M0,30 C150,60 350,0 500,30 L500,00 L0,0 Z" style="stroke: none; fill: #004b5f;"></path>
+          </svg>
+        </div>
+      
+        <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; padding: 2rem; gap: 2rem;">
+          
+          <!-- LOGO + GET STARTED -->
+          <div>
+            <h3 style="margin-bottom: 1rem;">LOGO</h3>
+            <p style="font-weight: bold;">GET STARTED</p>
+            <ul style="list-style: none; padding: 0;">
+              <li><a href="#" style="color: white; text-decoration: none;">Start</a></li>
+              <li><a href="#" style="color: white; text-decoration: none;">Documentation</a></li>
+              <li><a href="#" style="color: white; text-decoration: none;">Installation</a></li>
+            </ul>
+          </div>
+      
+          <!-- COMPANY -->
+          <div>
+            <p style="font-weight: bold;">COMPANY</p>
+            <ul style="list-style: none; padding: 0;">
+              <li><a href="#" style="color: white; text-decoration: none;">Contact</a></li>
+              <li><a href="#" style="color: white; text-decoration: none;">News</a></li>
+              <li><a href="#" style="color: white; text-decoration: none;">Careers</a></li>
+            </ul>
+            <p style="font-weight: bold; margin-top: 1rem;">LEGAL</p>
+            <ul style="list-style: none; padding: 0;">
+              <li><a href="#" style="color: white; text-decoration: none;">Privacy Notice</a></li>
+              <li><a href="#" style="color: white; text-decoration: none;">Terms of Use</a></li>
+            </ul>
+          </div>
+      
+          <!-- QUICK LINKS -->
+          <div>
+            <p style="font-weight: bold;">QUICK LINKS</p>
+            <ul style="list-style: none; padding: 0;">
+              <li><a href="#" style="color: white; text-decoration: none;">Support Center</a></li>
+              <li><a href="#" style="color: white; text-decoration: none;">Service Status</a></li>
+              <li><a href="#" style="color: white; text-decoration: none;">Security</a></li>
+              <li><a href="#" style="color: white; text-decoration: none;">Blog</a></li>
+              <li><a href="#" style="color: white; text-decoration: none;">Customers</a></li>
+              <li><a href="#" style="color: white; text-decoration: none;">Reviews</a></li>
+            </ul>
+          </div>
+      
+          <!-- CONTACTO -->
+          <div>
+            <p style="font-weight: bold;">LET'S CHAT</p>
+            <p>Have a support question?</p>
+            <a href="#" style="display: inline-block; background-color: #128ab2; color: white; padding: 0.5rem 1rem; border-radius: 25px; text-decoration: none; margin-bottom: 1rem;">GET IN TOUCH</a>
+            <p style="font-weight: bold;">YOU CALL US</p>
+            <p>0124-64XXXX</p>
+          </div>
+        </div>
+      
+        <!-- Bottom Bar -->
+        <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.2); padding: 1rem 2rem; font-size: 0.9rem;">
+          ©2024 | Designed By: Your Name | All rights reserved.
+          <div style="margin-top: 0.5rem;">
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="24" alt="LinkedIn" style="margin: 0 5px;"></a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" width="24" alt="Twitter" style="margin: 0 5px;"></a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" width="24" alt="YouTube" style="margin: 0 5px;"></a>
+            <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="24" alt="GitHub" style="margin: 0 5px;"></a>
+          </div>
+        </div>
+      </footer>
+      
+</body>
+</html>

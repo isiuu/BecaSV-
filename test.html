@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Vocacional</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      padding: 40px;
+      background: #f0f4f8;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1, h2 {
+      text-align: center;
+    }
+    .question {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    }
+    label {
+      display: block;
+      margin: 8px 0;
+    }
+    button {
+      display: block;
+      margin: 30px auto;
+      padding: 12px 24px;
+      background: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .result {
+      background: #e6ffed;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Test Vocacional</h1>
+  <p>Responde honestamente del 1 (nunca) al 5 (siempre)</p>
+
+  <form id="vocationalTest">
+    <div class="question" data-area="arte">
+      <strong>1. Disfruto crear cosas nuevas, como dibujos, música o manualidades.</strong>
+      <label><input type="radio" name="q1" value="1"> 1</label>
+      <label><input type="radio" name="q1" value="2"> 2</label>
+      <label><input type="radio" name="q1" value="3"> 3</label>
+      <label><input type="radio" name="q1" value="4"> 4</label>
+      <label><input type="radio" name="q1" value="5"> 5</label>
+    </div>
+
+    <div class="question" data-area="ciencia">
+      <strong>2. Me gusta observar los fenómenos naturales y preguntarme por qué ocurren.</strong>
+      <label><input type="radio" name="q2" value="1"> 1</label>
+      <label><input type="radio" name="q2" value="2"> 2</label>
+      <label><input type="radio" name="q2" value="3"> 3</label>
+      <label><input type="radio" name="q2" value="4"> 4</label>
+      <label><input type="radio" name="q2" value="5"> 5</label>
+    </div>
+
+    <div class="question" data-area="tecnologia">
+      <strong>3. Me atrae la idea de diseñar objetos, sistemas o estructuras.</strong>
+      <label><input type="radio" name="q3" value="1"> 1</label>
+      <label><input type="radio" name="q3" value="2"> 2</label>
+      <label><input type="radio" name="q3" value="3"> 3</label>
+      <label><input type="radio" name="q3" value="4"> 4</label>
+      <label><input type="radio" name="q3" value="5"> 5</label>
+    </div>
+
+    <div class="question" data-area="humanidades">
+      <strong>4. Me interesan los temas históricos, sociales y filosóficos.</strong>
+      <label><input type="radio" name="q4" value="1"> 1</label>
+      <label><input type="radio" name="q4" value="2"> 2</label>
+      <label><input type="radio" name="q4" value="3"> 3</label>
+      <label><input type="radio" name="q4" value="4"> 4</label>
+      <label><input type="radio" name="q4" value="5"> 5</label>
+    </div>
+
+    <div class="question" data-area="emprendimiento">
+      <strong>5. Me motiva emprender proyectos propios y asumir desafíos.</strong>
+      <label><input type="radio" name="q5" value="1"> 1</label>
+      <label><input type="radio" name="q5" value="2"> 2</label>
+      <label><input type="radio" name="q5" value="3"> 3</label>
+      <label><input type="radio" name="q5" value="4"> 4</label>
+      <label><input type="radio" name="q5" value="5"> 5</label>
+    </div>
+
+    <button type="submit">Calcular resultado</button>
+  </form>
+
+  <div class="result" id="resultado"></div>
+
+  <script>
+    document.getElementById('vocationalTest').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const areas = {};
+      const preguntas = document.querySelectorAll('.question');
+      let totalPreguntas = 0;
+
+      preguntas.forEach(p => {
+        const area = p.dataset.area;
+        const seleccionada = p.querySelector('input[type=radio]:checked');
+        if (seleccionada) {
+          areas[area] = (areas[area] || 0) + parseInt(seleccionada.value);
+          totalPreguntas++;
+        }
+      });
+
+      const resultado = document.getElementById('resultado');
+      if (totalPreguntas < preguntas.length) {
+        resultado.innerHTML = '<strong>Por favor responde todas las preguntas.</strong>';
+        return;
+      }
+
+      // Calcular total por área
+      let totalPuntos = Object.values(areas).reduce((a, b) => a + b, 0);
+      let maxArea = '';
+      let maxValor = 0;
+      let resumen = '<h2>Resultados</h2><ul>';
+
+      for (const [area, valor] of Object.entries(areas)) {
+        const porcentaje = Math.round((valor / totalPuntos) * 100);
+        resumen += `<li><strong>${area}</strong>: ${porcentaje}%</li>`;
+        if (valor > maxValor) {
+          maxValor = valor;
+          maxArea = area;
+        }
+      }
+      resumen += '</ul>';
+
+      resumen += `<p><strong>Área dominante:</strong> ${maxArea.toUpperCase()}</p>`;
+
+      resultado.innerHTML = resumen;
+    });
+  </script>
+</body>
+</html>

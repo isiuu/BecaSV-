@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Historias de Éxito</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    .container {
+      padding: 3rem 2rem;
+    }
+    .navbar {
+  background-color: #fbd84c1e;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+}
+.navbar .logo {
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #000;
+}
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+.nav-links a {
+  text-decoration: none;
+  color: #000;
+  font-weight: 600;
+}
+.nav-links a:hover {
+  color: #ffee52;
+}
+    .carousel-wrapper {
+      max-width: 100%;
+      overflow: hidden;
+      padding: 1rem 0;
+      position: relative;
+    }
+
+    .carousel {
+      display: flex;
+      gap: 1.5rem;
+      padding: 1rem 2rem;
+      scroll-behavior: smooth;
+      transition: transform 0.3s ease-in-out;
+      justify-content: center;
+      overflow-x: scroll;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .card {
+      flex: 0 0 200px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1rem;
+    }
+
+    .card-title {
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .card.active {
+      border: 2px solid #4a6cf7;
+      transform: scale(1.05);
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 40%;
+      background-color: #ffffffcc;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem 1rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 1;
+    }
+
+    .carousel-btn.left { left: -10px; }
+    .carousel-btn.right { right: -10px; }
+
+    .description-box {
+      margin-top: 2rem;
+      background-color: white;
+      border-radius: 15px;
+      max-width: 600px;
+      margin-inline: auto;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      display: none;
+    }
+
+    .description-box.active {
+      display: block;
+    }
+
+    .features {
+      display: flex;
+      gap: 2rem;
+      justify-content: center;
+      padding: 4rem 2rem;
+      flex-wrap: wrap;
+    }
+
+    .feature {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      width: 220px;
+    }
+
+    .scroll-top-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      padding: 0.5rem 1rem;
+      background: #000;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: none;
+    }
+  </style>
+<script>
+    function scrollCarousel(direction) {
+      const carousel = document.getElementById("carousel");
+      const scrollAmount = 250;
+      carousel.scrollLeft += direction * scrollAmount;
+    }
+
+    function showStory(card, name, story) {
+      document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+      document.getElementById('descName').innerText = name;
+      document.getElementById('descText').innerText = story;
+      document.getElementById('descriptionBox').classList.add('active');
+    }
+
+    const topBtn = document.querySelector('.scroll-top-btn');
+    window.addEventListener('scroll', () => {
+      topBtn.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</head>
+<body>
+
+  <div class="navbar">
+    <img src="" alt="Logo" />
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Becas</a>
+      <a href="#">Universidades</a>
+      <a href="#">Sobre nosotros</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Historias de Éxito</h2>
+    <p>Selecciona una historia para conocer más sobre cada persona.</p>
+
+    <div class="carousel-wrapper">
+      <button class="carousel-btn left" onclick="scrollCarousel(-1)">‹</button>
+      <div class="carousel" id="carousel">
+        <div class="card" onclick="showStory(this, 'Ana López', 'Ana logró una beca completa para estudiar robótica en Japón gracias a su trabajo comunitario.')">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Ana López">
+          <div class="card-content">
+            <div class="card-title">Ana López</div>
+            <div class="card-subtitle">Beca Japón</div>
+          </div>
+        </div>
+        <div class="card" onclick="showStory(this, 'Carlos Méndez', 'Carlos creó una app educativa que fue adoptada por más de 50 escuelas públicas.')">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Méndez">
+          <div class="card-content">
+            <div class="card-title">Carlos Méndez</div>
+            <div class="card-subtitle">Innovador</div>
+          </div>
+        </div>
+        <div class="card" onclick="showStory(this, 'Laura Escobar', 'Laura trabaja hoy en el CERN, luego de conseguir una beca internacional para Física.')">
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Laura Escobar">
+          <div class="card-content">
+            <div class="card-title">Laura Escobar</div>
+            <div class="card-subtitle">Científica</div>
+          </div>
+        </div>
+        <div class="card" onclick="showStory(this, 'Kevin Díaz', 'Kevin ganó una competencia internacional de programación representando a El Salvador.')">
+          <img src="https://randomuser.me/api/portraits/men/76.jpg" alt="Kevin Díaz">
+          <div class="card-content">
+            <div class="card-title">Kevin Díaz</div>
+            <div class="card-subtitle">Programador</div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-btn right" onclick="scrollCarousel(1)">›</button>
+    </div>
+
+    <div class="description-box" id="descriptionBox">
+      <h3 id="descName"></h3>
+      <p id="descText"></p>
+    </div>
+  </div>
+
+  <section class="features">
+    <div class="feature">
+      <h3>+200 Proyectos</h3>
+      <p>Desarrollos globales con impacto real y medible.</p>
+    </div>
+    <div class="feature">
+      <h3>+100 Clientes</h3>
+      <p>Empresas que confían en nuestra experiencia.</p>
+    </div>
+    <div class="feature">
+      <h3>Diseño Premium</h3>
+      <p>Cada detalle está creado con elegancia y funcionalidad.</p>
+    </div>
+  </section>
+
+  <button class="scroll-top-btn" onclick="scrollToTop()">↑</button>
+</body>
+</html>

@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HOME</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Quicksand', sans-serif;
+      
+    }
+    
+    body {
+      background-color: #111;
+      color: white;
+    }
+
+    /* NAVBAR */
+   
+    .navbar {
+      background-color: #f1e9bada;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+    .navbar .logo {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: #000;
+    }
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #000;
+      font-weight: 600;
+    }
+    .nav-links a:hover {
+      color: #ffee52;
+    }
+    /* CAROUSEL */
+    .carousel {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  height: 100vh; /* antes decía 80vh */
+}
+
+    .slide {
+      display: none;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .slide.active {
+      display: block;
+      animation: fade 1s;
+    }
+
+    @keyframes fade {
+      from {opacity: 0.4;}
+      to {opacity: 1;}
+    }
+
+    .slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .content {
+     position: absolute;
+     top: 50%;
+     left: 10%;
+     transform: translateY(-50%);
+     color: white;
+    }
+
+
+    .content h1 {
+      font-size: 40px;
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+
+    .content p {
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      background: linear-gradient(to right, #c471f5, #fa71cd);
+      border: none;
+      border-radius: 20px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* BUTTONS */
+    .controls {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .dot {
+      height: 15px;
+      width: 15px;
+      margin: 0 5px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background-color: #fff;
+    }
+
+    @media screen and (max-width: 768px) {
+      .content h1 {
+        font-size: 28px;
+      }
+
+      .navbar {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+   .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    padding: 60px 40px;
+    background: linear-gradient(to bottom right, hsl(197, 71%, 83%));
+  }
+  
+  .feature-card {
+  background: white;
+  padding: 30px 20px;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+  .feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  }
+  
+  .icon {
+    background-color: #ffd700;
+    color: black;
+    font-size: 32px;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .feature-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #222;
+  }
+  
+  .feature-card p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .feature-card button {
+    background: #6a11cb;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease;
+  }
+  
+  .feature-card button:hover {
+    background: linear-gradient(to right, #2575fc, #6a11cb);
+  }
+  .scholarships {
+    background-color: hsl(197, 71%, 83%);
+    padding: 60px 30px;
+    text-align: center;
+  }
+  .filter-btn.active {
+  background-color: #222;
+  color: white;
+}
+
+  .scholarships h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #111;
+  }
+  
+  .filters {
+    margin-bottom: 30px;
+  }
+  
+  .filters button {
+    margin: 5px;
+    padding: 10px 20px;
+    background-color: white;
+    border: 2px solid #222;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+  
+  .filters button:hover {
+    background-color: #222;
+    color: white;
+  }
+  
+  .cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    justify-content: center;
+  }
+  
+  .scholarship-card {
+    background: white;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    transition: transform 0.2s ease;
+  }
+  
+  .scholarship-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .scholarship-card img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 15px;
+  }
+  
+  .scholarship-card .badge {
+    background-color: gold;
+    color: black;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 4px 12px;
+    font-size: 13px;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  
+  .scholarship-card h4 {
+    font-size: 18px;
+    margin: 10px 0 5px;
+    color: #222;
+  }
+  
+  .scholarship-card p {
+    font-size: 14px;
+    color: #444;
+  }
+  
+  /* RESPONSIVE */
+  @media (max-width: 480px) {
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  
+    .filters button {
+      padding: 8px 16px;
+      font-size: 13px;
+    }
+  }
+
+.recursos-utiles {
+  background: hsl(197, 71%, 83%);
+  padding: 60px 30px;
+  text-align: center;
+}
+
+.recursos-utiles h2 {
+  font-size: 28px;
+  margin-bottom: 40px;
+  color: #222;
+}
+.recursos-contenedor {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.recurso-card {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-bottom: 30px;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.recurso-card:hover {
+  transform: translateY(-5px);
+}
+
+.recurso-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 12px;
+  flex-shrink: 0;
+  
+}
+
+.info {
+  flex-grow: 1;
+  text-align: left;
+  padding: 0 20px;
+}
+
+.tag {
+  background: #ffd700;
+  color: #000;
+  font-weight: bold;
+  padding: 5px 12px;
+  border-radius: 12px;
+  font-size: 13px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.info h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #111;
+}
+
+.detalles span {
+  display: inline-block;
+  font-size: 14px;
+  color: #444;
+  margin-right: 15px;
+  margin-top: 5px;
+}
+
+.btn-ir {
+  background: #8758ff;
+  color: white;
+  font-size: 24px;
+  width: 50px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.btn-ir:hover {
+  background: #5e33cc;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .recurso-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .info {
+    padding: 20px 0;
+  }
+
+  .btn-ir {
+    position: relative;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    align-self: center;
+    margin-top: 10px;
+  }
+}
+  
+
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <img src="" alt="Logo" />
+    <div class="nav-links">
+      <a href="#">Inicio</a>
+      <a href="#">Becas</a>
+      <a href="#">Universidades</a>
+      <a href="#">Sobre Nosotros</a>
+    </div>
+  </div>
+
+  <!-- CAROUSEL -->
+  <div class="carousel">
+    <div class="slide active">
+      <img src="imagenes/becas.jpg" alt="About Us" />
+      <div class="content">
+        <h1>ABOUT US</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <button class="btn">Saber más</button>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="imagenes/Alejandro_Gutman.jpg" alt="Slide 2" />
+      <div class="content">
+        <h1>EDUCACIÓN</h1>
+        <p>Apoyamos a jóvenes con oportunidades reales.</p>
+        <button class="btn">Descubre cómo</button>
+      </div>
+    </div>
+
+    <div class="slide">
+      <img src="imagenes/Alejandro_Gutman.jpg" alt="Slide 3" />
+      <div class="content">
+        <h1>OPORTUNIDADES</h1>
+        <p>Tu futuro comienza aquí. ¡Únete ahora!</p>
+        <button class="btn">Aplicar</button>
+      </div>
+    </div>
+
+    <!-- Dots -->
+    <div class="controls">
+      <span class="dot active" onclick="currentSlide(0)"></span>
+      <span class="dot" onclick="currentSlide(1)"></span>
+      <span class="dot" onclick="currentSlide(2)"></span>
+    </div>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    const dots = document.querySelectorAll('.dot');
+    let current = 0;
+  
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active');
+        dots[i].classList.remove('active');
+      });
+  
+      slides[index].classList.add('active');
+      dots[index].classList.add('active');
+      current = index;
+    }
+  
+    function nextSlide() {
+      let next = (current + 1) % slides.length;
+      showSlide(next);
+    }
+  
+    // Avanza automáticamente cada 5 segundos
+    setInterval(nextSlide, 5000);
+  
+    // Permitir clic en los dots
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        showSlide(index);
+      });
+    });
+  
+    // Mostrar el primero al cargar
+    showSlide(current);
+  </script>
+  
+  <!-- SECCIONES DESTACADAS -->
+
+<section class="features">
+
+    <div class="feature-card">
+      <div class="icon">📚</div>
+      <h3>Universidades</h3>
+      <p>Explora universidades nacionales y extranjeras.</p>
+      <button onclick="window.location.href='succes.html'">
+        Leer más
+      </button>
+      
+    </div>
+  
+    <div class="feature-card">
+      <div class="icon">📝</div>
+      <h3>Test vocacional</h3>
+      <p>Descubre qué áreas profesionales se alinean contigo.</p>
+      <button onclick="window.location.href='test.html'">
+        Leer más
+      </button>
+      
+    </div>
+    
+  
+    <div class="feature-card">
+      <div class="icon">🎓</div>
+      <h3>Historias de éxito</h3>
+      <p>Inspírate con testimonios de becarios destacados.</p>
+      <button>Leer más</button>
+    </div>
+  </section>
+  <!-- PRÓXIMAS BECAS -->
+   
+<section class="scholarships">
+    <h2>Próximas Becas</h2>
+  
+    <!-- Botones de filtro -->
+ <!-- Botones de filtro -->
+<div class="filters">
+    <button class="filter-btn active" data-category="all">Mostrar todas</button>
+    <button class="filter-btn" data-category="internacional">Internacional</button>
+    <button class="filter-btn" data-category="nacional">Nacional</button>
+    <button class="filter-btn" data-category="maestria">Maestría</button>
+  </div>
+  <script>
+    document.querySelectorAll('.filter-btn').forEach(button => {
+      button.addEventListener('click', () => {
+        // Quitar clase active a todos
+        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+        // Activar botón actual
+        button.classList.add('active');
+  
+        const category = button.dataset.category;
+        const cards = document.querySelectorAll('.scholarship-card');
+  
+        cards.forEach(card => {
+          if (category === 'all' || card.classList.contains(category)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+    
+    <!-- Grid de tarjetas -->
+   
+    <div class="cards-container">
+      <div class="scholarship-card internacional">
+        <span class="badge">INTERNACIONAL</span>
+        <img src="imagenes/becas.jpg" alt="Beca internacional">
+        <h4>Beca A</h4>
+        <p>Postula a una experiencia en el extranjero.</p>
+      </div>
+  
+      <div class="scholarship-card nacional">
+        <span class="badge">NACIONAL</span>
+        <img src="imagenes/becas.jpg" alt="Beca nacional">
+        <h4>Beca B</h4>
+        <p>Oportunidad dentro de El Salvador.</p>
+      </div>
+  
+      <div class="scholarship-card maestria">
+        <span class="badge">MAESTRÍA</span>
+        <img src="imagenes/becas.jpg" alt="Beca maestría">
+        <h4>Beca C</h4>
+        <p>Programas para estudios de posgrado.</p>
+      </div>
+      <div class="scholarship-card maestria">
+        <span class="badge">MAESTRÍA</span>
+        <img src="imagenes/becas.jpg" alt="Beca maestría">
+        <h4>Beca C</h4>
+        <p>Programas para estudios de posgrado.</p>
+      </div>
+      <div class="scholarship-card maestria">
+        <span class="badge">MAESTRÍA</span>
+        <img src="imagenes/becas.jpg" alt="Beca maestría">
+        <h4>Beca C</h4>
+        <p>Programas para estudios de posgrado.</p>
+      </div>
+  
+      <div class="scholarship-card internacional">
+        <span class="badge">INTERNACIONAL</span>
+        <img src="https://via.placeholder.com/300x200/cc66ff/ffffff" alt="Beca internacional">
+        <h4>Beca D</h4>
+        <p>Viaja a otro país con esta beca.</p>
+      </div>
+  
+      <div class="scholarship-card nacional">
+        <span class="badge">NACIONAL</span>
+        <img src="https://via.placeholder.com/300x200/cc66ff/ffffff" alt="Beca nacional">
+        <h4>Beca E</h4>
+        <p>Educación superior accesible localmente.</p>
+      </div>
+  
+      <div class="scholarship-card maestria">
+        <span class="badge">MAESTRÍA</span>
+        <img src="https://via.placeholder.com/300x200/cc66ff/ffffff" alt="Beca maestría">
+        <h4>Beca F</h4>
+        <p>Impulsa tu carrera profesional.</p>
+      </div>
+    </div>
+  </section>
+  <!-- RECURSOS ÚTILES -->
+<section class="recursos-utiles">
+    <h2>📚 Recursos Útiles</h2>
+  
+    <div class="recursos-contenedor">
+      <div class="recurso-card">
+        <img src="https://via.placeholder.com/150x150.png?text=Carta" alt="Carta de motivación">
+        <div class="info">
+          <span class="tag">DOCUMENTO</span>
+          <h3>Plantilla de carta de motivación</h3>
+          <div class="detalles">
+            <span>Categoría: Aplicación</span>
+            <span>Idioma: Español</span>
+            <span>Formato: PDF</span>
+          </div>
+        </div>
+        <div class="btn-ir">→</div>
+      </div>
+  
+      <div class="recurso-card">
+        <img src="https://via.placeholder.com/150x150.png?text=CV" alt="CV ganador">
+        <div class="info">
+          <span class="tag">CV</span>
+          <h3>Ejemplo de CV ganador</h3>
+          <div class="detalles">
+            <span>Categoría: Perfil académico</span>
+            <span>Idioma: Inglés</span>
+            <span>Formato: DOCX</span>
+          </div>
+        </div>
+        <div class="btn-ir">→</div>
+      </div>
+  
+      <div class="recurso-card">
+        <img src="https://via.placeholder.com/150x150.png?text=Tips" alt="Tips entrevista">
+        <div class="info">
+          <span class="tag">GUÍA</span>
+          <h3>Tips para entrevistas</h3>
+          <div class="detalles">
+            <span>Categoría: Entrevistas</span>
+            <span>Idioma: Bilingüe</span>
+            <span>Formato: Video</span>
+          </div>
+        </div>
+        <div class="btn-ir">→</div>
+      </div>
+  
+      <div class="recurso-card">
+        <img src="https://via.placeholder.com/150x150.png?text=Inglés" alt="Tutoriales de inglés">
+        <div class="info">
+          <span class="tag">IDIOMA</span>
+          <h3>Tutoriales de inglés</h3>
+          <div class="detalles">
+            <span>Categoría: Idiomas</span>
+            <span>Nivel: Básico - Avanzado</span>
+            <span>Formato: Playlist</span>
+          </div>
+        </div>
+        <div class="btn-ir">→</div>
+      </div>
+    </div>
+  </section>
+  <footer style="background-color: #004b5f; color: white; padding-top: 60px; position: relative;">
+    <!-- Wave effect -->
+    <div style="position: absolute; top: -60px; left: 0; width: 100%; overflow: hidden; line-height: 0;">
+      <svg viewBox="0 0 500 60" preserveAspectRatio="none" style="height: 60px; width: 100%;">
+        <path d="M0,30 C150,60 350,0 500,30 L500,00 L0,0 Z" style="stroke: none; fill: #004b5f;"></path>
+      </svg>
+    </div>
+  
+    <div style="max-width: 1200px; margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; padding: 2rem; gap: 2rem;">
+      
+      <!-- LOGO + GET STARTED -->
+      <div>
+        <h3 style="margin-bottom: 1rem;">LOGO</h3>
+        <p style="font-weight: bold;">GET STARTED</p>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="#" style="color: white; text-decoration: none;">Start</a></li>
+          <li><a href="#" style="color: white; text-decoration: none;">Documentation</a></li>
+          <li><a href="#" style="color: white; text-decoration: none;">Installation</a></li>
+        </ul>
+      </div>
+  
+      <!-- COMPANY -->
+      <div>
+        <p style="font-weight: bold;">COMPANY</p>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="#" style="color: white; text-decoration: none;">Contact</a></li>
+          <li><a href="#" style="color: white; text-decoration: none;">News</a></li>
+          <li><a href="#" style="color: white; text-decoration: none;">Careers</a></li>
+        </ul>
+        <p style="font-weight: bold; margin-top: 1rem;">LEGAL</p>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="#" style="color: white; text-decoration: none;">Privacy Notice</a></li>
+          <li><a href="#" style="color: white; text-decoration: none;">Terms of Use</a></li>
+        </ul>
+      </div>
+  
+      <!-- QUICK LINKS -->
+      <div>
+        <p style="font-weight: bold;">QUICK LINKS</p>
+        <ul style="list-style: none; padding: 0;">
+          <li><a href="#" style="color: white; text-decoration: none;">Support Center</a></li>
+          <li><a href="#" style="color: white; text-decoration: none;">Service Status</a></li>
+          <li><a href="#" style="color: white; text-decoration: none;">Security</a></li>
+          <li><a href="#" style="color: white; text-decoration: none;">Blog</a></li>
+          <li><a href="#" style="color: white; text-decoration: none;">Customers</a></li>
+          <li><a href="#" style="color: white; text-decoration: none;">Reviews</a></li>
+        </ul>
+      </div>
+  
+      <!-- CONTACT -->
+      <div>
+        <p style="font-weight: bold;">LET'S CHAT</p>
+        <p>Have a support question?</p>
+        <a href="#" style="display: inline-block; background-color: #128ab2; color: white; padding: 0.5rem 1rem; border-radius: 25px; text-decoration: none; margin-bottom: 1rem;">GET IN TOUCH</a>
+        <p style="font-weight: bold;">YOU CALL US</p>
+        <p>0124-64XXXX</p>
+      </div>
+    </div>
+  
+    <!-- Bottom Bar -->
+    <div style="text-align: center; border-top: 1px solid rgba(255,255,255,0.2); padding: 1rem 2rem; font-size: 0.9rem;">
+      ©2024 | Designed By: Your Name | All rights reserved.
+      <div style="margin-top: 0.5rem;">
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" width="24" alt="LinkedIn" style="margin: 0 5px;"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733579.png" width="24" alt="Twitter" style="margin: 0 5px;"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" width="24" alt="YouTube" style="margin: 0 5px;"></a>
+        <a href="#"><img src="https://cdn-icons-png.flaticon.com/512/733/733553.png" width="24" alt="GitHub" style="margin: 0 5px;"></a>
+      </div>
+    </div>
+  </footer>
+  
+</body>
+</html>
